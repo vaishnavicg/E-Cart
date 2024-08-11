@@ -23,7 +23,7 @@ const HomePage = () => {
   //get all cat
   const getAllCategory = async () => {
     try {
-      const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/category/get-category`);
+      const { data } = await axios.get(`${import.meta.env.VITE_APP_API}/api/v1/category/get-category`);
       if (data?.success) {
         setCategories(data?.category);
       }
@@ -41,7 +41,7 @@ const HomePage = () => {
   //getTotal count
   const getTotal = async () => {
     try {
-      const {data}= await axios.get(`${process.env.REACT_APP_API}/api/v1/product/product-count`)
+      const {data}= await axios.get(`${import.meta.env.VITE_APP_API}/api/v1/product/product-count`)
       setTotal(data?.total);
     } catch (error) {
       console.log(error);
@@ -52,7 +52,7 @@ const HomePage = () => {
   const getAllProducts = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/product/product-list/${page}`);
+      const { data } = await axios.get(`${import.meta.env.VITE_APP_API}/api/v1/product/product-list/${page}`);
       setLoading(false)
       setProducts(data?.products);
     } catch (error) {
@@ -73,7 +73,7 @@ const HomePage = () => {
   //get filtered product
   const filterProduct = async ()=> {
     try {
-      const {data} = await axios.post(`${process.env.REACT_APP_API}/api/v1/product/product-filters`,{checked,radio})
+      const {data} = await axios.post(`${import.meta.env.VITE_APP_API}/api/v1/product/product-filters`,{checked,radio})
       setProducts(data?.products)
     } catch (error) {
       console.log(error);
@@ -100,7 +100,7 @@ const HomePage = () => {
   const loadMore = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/product/product-list/${page}`);
+      const { data } = await axios.get(`${import.meta.env.VITE_APP_API}/api/v1/product/product-list/${page}`);
       setLoading(false)
       setProducts([...products,...data?.products]);
       console.log(data?.products)
@@ -143,7 +143,7 @@ const HomePage = () => {
             {products?.map(p => (
               <div className="card m-2" style={{width:"16rem"}} key={p._id}>
                 <img
-                  src={`${process.env.REACT_APP_API}/api/v1/product/product-photo/${p._id}`}
+                  src={`${import.meta.env.VITE_APP_API}/api/v1/product/product-photo/${p._id}`}
                   className="card-img-top"
                   alt={p.name}
                 />

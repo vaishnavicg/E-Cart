@@ -27,7 +27,7 @@ const Profile = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.put(`${process.env.REACT_APP_API}/api/v1/auth/profile`, {
+      const { data } = await axios.put(`${import.meta.env.VITE_APP_API}/api/v1/auth/profile`, {
         name,
         email,
         password,
